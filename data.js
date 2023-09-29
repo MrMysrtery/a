@@ -4,6 +4,8 @@ document.getElementById("q").id = "q-modified";
 document.getElementById("q-modified").name = "q-modified";
 const textInput = document.getElementById('q-modified');
 
+document.getElementById("ad_stickyslot").remove();
+
 let shift = 13;
 let plaintextAlphabet = 'abcdefghijklmnopqrstuvwxyz.://_?=&'.split('');
 const cipherAlphabet = plaintextAlphabet.map((_symbol, index) => {
