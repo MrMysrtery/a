@@ -1,5 +1,7 @@
 console.log("Initializing...");
 let enterKey = '#';
+let fromLA = "la";
+let toLA = "de";
 document.getElementById("q").id = "q-modified";
 document.getElementById("q-modified").name = "q-modified";
 document.getElementById("q-modified").placeholder = "Suchen...";
@@ -25,7 +27,8 @@ fetch("https://translate.googleapis.com/translate_a/single?client=gtx&sl=la&tl=d
       formattedMessage += responseJson[0][i][0];
     }
 
-    textInput.value = formattedMessage;
+    textInput.value = "";
+    navigator.clipboard.writeText(formattedMessage);
   
   });
 }
