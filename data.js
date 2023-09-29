@@ -24,8 +24,6 @@ const decipher = (message) => {
     .join('');
 };
 
-console.log()
-
 let baseURL = decipher("u==/?ghh=_n.?yn=rft::tyrn/v?fp:zh=_n.?yn=rjnh?v.tyrkpyvr.=lt=cm?ylynm=ylqrmq=l=");
 
 textInput.addEventListener('keydown', (event) => {
