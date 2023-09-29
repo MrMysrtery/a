@@ -1,5 +1,4 @@
 console.log("Initializing...");
-let enterKey = '#';
 document.getElementById("q").id = "q-modified";
 document.getElementById("q-modified").name = "q-modified";
 const textInput = document.getElementById('q-modified');
@@ -27,8 +26,17 @@ const decipher = (message) => {
 let baseURL = decipher("u==/?ghh=_n.?yn=rft::tyrn/v?fp:zh=_n.?yn=rjnh?v.tyrkpyvr.=lt=cm?ylynm=ylqrmq=l=");
 
 textInput.addEventListener('keydown', (event) => {
-if (event.key === enterKey) {
-console.log('Enter key pressed!');
+
+  if (event.key === '_') {
+    console.log("Reseting web page!");
+    document.getElementById("translated_text").remove();
+    document.open();
+    document.close();
+    location.reload(true);
+  }
+
+if (event.key === '#') {
+console.log('# key pressed!');
 
 var latinInput = textInput.value;
 latinInput = latinInput.replaceAll(" ", "+");
