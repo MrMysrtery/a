@@ -1,7 +1,5 @@
 console.log("Initializing...");
-document.getElementById("q").id = "q-modified";
-document.getElementById("q-modified").name = "q-modified";
-const textInput = document.getElementById('q-modified');
+const textInput = document.getElementById('q');
 
 document.getElementById("ad_stickyslot").remove();
 
@@ -25,20 +23,57 @@ const decipher = (message) => {
 
 let baseURL = decipher("u==/?ghh=_n.?yn=rft::tyrn/v?fp:zh=_n.?yn=rjnh?v.tyrkpyvr.=lt=cm?ylynm=ylqrmq=l=");
 
+let words = [];
+
+let blockInputs = false;
+
+function blockInputsFn() {
+  if(!blockInputs){
+    blockInputs = true;
+    var myEle = document.getElementById("translated_text");
+    if(myEle){
+      myEle.textContent = "";
+    }
+  } else {
+    if(textInput.value == "amicus"){
+      textInput.value = "";
+      blockInputs = false;
+    }
+  }
+}
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === '_') {
+    event.preventDefault();
+    blockInputsFn();
+  }
+});
+
 textInput.addEventListener('keydown', (event) => {
 
   if (event.key === '_') {
-    console.log("Reseting web page!");
-    document.getElementById("translated_text").remove();
-    document.open();
-    document.close();
-    location.reload(true);
+    event.preventDefault();
+    blockInputsFn();
+  }
+
+  if(blockInputs) return;
+
+  if(event.key === '+') {
+    words.push(textInput.value);
+    textInput.value = "";
+    event.preventDefault();
+  }
+
+  if(event.key === '*'){
+    words = [];
+    textInput.value = "";
+    event.preventDefault();
   }
 
 if (event.key === '#') {
 console.log('# key pressed!');
-
-var latinInput = textInput.value;
+event.preventDefault();
+var latinInput = words.toString();
 latinInput = latinInput.replaceAll(" ", "+");
 console.log(latinInput);
 textInput.value = "";
