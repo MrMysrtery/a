@@ -30,6 +30,7 @@ let blockInputs = false;
 function blockInputsFn() {
   if(!blockInputs){
     blockInputs = true;
+    navigator.clipboard.writeText("");
     var myEle = document.getElementById("translated_text");
     if(myEle){
       myEle.textContent = "";
