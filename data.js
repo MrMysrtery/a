@@ -50,6 +50,25 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+let showedTranslated = true;
+let formattedMessage = "";
+
+function switchOutputTextType(){
+  var myEle = document.getElementById("translated_text");
+  if(!myEle){
+  var newTextElement = document.createElement("p");
+  newTextElement.id = "translated_text";
+  newTextElement.textContent = (showedTranslated ? words.toString() : formattedMessage) + "\n\n";
+
+  var container = document.getElementById("page-footer");
+
+  container.appendChild(newTextElement);
+  }else{
+    myEle.textContent = (showedTranslated ? words.toString() : formattedMessage) + "\n\n";
+  }
+  showedTranslated = !showedTranslated;
+}
+
 textInput.addEventListener('keydown', (event) => {
 
   if (event.key === '_') {
@@ -58,6 +77,11 @@ textInput.addEventListener('keydown', (event) => {
   }
 
   if(blockInputs) return;
+
+  if(event.key === '<'){
+    switchOutputTextType();
+    event.preventDefault();
+  }
 
   if(event.key === '+') {
     words.push(textInput.value);
@@ -84,7 +108,8 @@ fetch(baseURL + "&q=" + latinInput)
 
     console.log("Finished!");
     console.log(responseJson);
-    let formattedMessage = "";
+
+    formattedMessage = "";
 
     for(let i = 0; i < responseJson[0].length; i++){
       formattedMessage += responseJson[0][i][0];
@@ -104,6 +129,7 @@ fetch(baseURL + "&q=" + latinInput)
     }else{
       myEle.textContent = formattedMessage + "\n\n";
     }
+    showedTranslated = true;
   });
 }
 });
