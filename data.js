@@ -58,13 +58,13 @@ function switchOutputTextType(){
   if(!myEle){
   var newTextElement = document.createElement("p");
   newTextElement.id = "translated_text";
-  newTextElement.textContent = (showedTranslated ? words.toString() : formattedMessage) + "\n\n";
+  newTextElement.textContent = (showedTranslated ? words.toString().replaceAll(".,", ". ") : formattedMessage) + "\n\n";
 
   var container = document.getElementById("page-footer");
 
   container.appendChild(newTextElement);
   }else{
-    myEle.textContent = (showedTranslated ? words.toString() : formattedMessage) + "\n\n";
+    myEle.textContent = (showedTranslated ? words.toString().replaceAll(".,", ". ") : formattedMessage) + "\n\n";
   }
   showedTranslated = !showedTranslated;
 }
@@ -99,7 +99,7 @@ if (event.key === '#') {
 console.log('# key pressed!');
 event.preventDefault();
 var latinInput = words.toString();
-latinInput = latinInput.replaceAll(" ", "+");
+latinInput = latinInput.replaceAll(".,", ". ").replaceAll(" ", "+");
 console.log(latinInput);
 textInput.value = "";
 fetch(baseURL + "&q=" + latinInput)
