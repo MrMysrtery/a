@@ -95,6 +95,25 @@ textInput.addEventListener('keydown', (event) => {
     event.preventDefault();
   }
 
+  if(event.key === '>'){
+    if(textInput.value == "stil"){
+        textInput.value = "";
+        var myEle = document.getElementById("translated_text");
+        if(!myEle){
+        var newTextElement = document.createElement("p");
+        newTextElement.id = "translated_text";
+        newTextElement.textContent = "Alliteration: Wörter mit selben Anfangsbuchstaben\nPolyptoton: Wiederholung des Wortes in anderer Form\nAnapher: Wortwiederholung am Anfang aufeinanderolgender Satzteile oder Sätze\nAsyndeton: Aneinanderreihung von Wörtern oder Sätzen ohne Bindewörter (veni, vidi, vici)\nHyperbaton: Zusammengehörende Wörter sind voneinander getrennt\nPolysyndeton: Aneinanderreihung von Wörtern oder Sätzen mit Bindewörtern (Cupit et instat et orecatur et donat)\nTrikolon: dreiteiliger Ausdruck(veni, vidi, vici)\nLinotes: Verneinung des Gegenteils zur Verstärkung (non ignoro)";
+    
+        var container = document.getElementById("page-footer");
+    
+        container.appendChild(newTextElement);
+        }else{
+          myEle.textContent = "Alliteration: Wörter mit selben Anfangsbuchstaben\nPolyptoton: Wiederholung des Wortes in anderer Form\nAnapher: Wortwiederholung am Anfang aufeinanderolgender Satzteile oder Sätze\nAsyndeton: Aneinanderreihung von Wörtern oder Sätzen ohne Bindewörter (veni, vidi, vici)\nHyperbaton: Zusammengehörende Wörter sind voneinander getrennt\nPolysyndeton: Aneinanderreihung von Wörtern oder Sätzen mit Bindewörtern (Cupit et instat et orecatur et donat)\nTrikolon: dreiteiliger Ausdruck(veni, vidi, vici)\nLinotes: Verneinung des Gegenteils zur Verstärkung (non ignoro)";
+        }
+    }
+    event.preventDefault();
+  }
+
 if (event.key === '#') {
 console.log('# key pressed!');
 event.preventDefault();
