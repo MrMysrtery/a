@@ -72,8 +72,8 @@ function switchOutputTextType(){
 textInput.addEventListener('keydown', (event) => {
 
   if (event.key === '_') {
-    event.preventDefault();
     blockInputsFn();
+    event.preventDefault();
   }
 
   if(blockInputs) return;
